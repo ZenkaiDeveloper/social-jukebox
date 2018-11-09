@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Napster from './Napster.js'
+import jQuery from 'jquery'
+
 
 const songsURL = 'http://localhost:3002/songs'
 
 class App extends Component {
-  state={
-    songs:[]
+  constructor(props){
+    super(props)
+    Napster(window, jQuery, JSON)
+
+    this.state={
+      songs:[]
+    }
+
+
+
+    window.Napster.init({
+      consumerKey: 'ZDhhZTQ5NzQtYWM1Yy00OTUzLWJhZGUtZTUzMGRkODc3Mjc2'
+
+    });
   }
+
 
 
   displaySongTitle = ()=>{
@@ -16,19 +31,25 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    fetch(songsURL)
-    .then(res => res.json())
-    .then(songs => this.setState({
-      songs
-    }))
-  }
+  // componentDidMount() {
+  //   fetch(songsURL)
+  //   .then(res => res.json())
+  //   .then(songs => this.setState({
+  //     songs
+  //   }))
+  // }
 
 
 
   render() {
+
+    console.log(window.Napster.player.play('Tra.5156528').play);
+
     return (
-      <div>{this.displaySongTitle()}</div>
+      <div>
+        {}
+      </div>
+
     );
   }
 }
