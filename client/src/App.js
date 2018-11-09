@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SearchContainer from './SearchContainer.js'
+import Jukebox from './Jukebox.js'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 const songsURL = 'http://localhost:3002/songs'
 
 class App extends Component {
   state={
-    songs:[]
+    addedSongs: []
   }
 
-
-  displaySongTitle = ()=>{
-    return this.state.songs.map(song=>{
-      return song.title
+  addSong = (event, song) => {
+    let newSongs = [...this.state.addedSongs, song]
+    this.setState({
+      addedSongs: newSongs
     })
-  }
-
-  componentDidMount() {
-    fetch(songsURL)
-    .then(res => res.json())
-    .then(songs => this.setState({
-      songs
-    }))
   }
 
 
 
   render() {
     return (
-      <div>{this.displaySongTitle()}</div>
+      <Router>
+      <div>
+      <Route exact path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
+      <Route path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
+      </div>
+      </Router>
     );
   }
 }
