@@ -1,55 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
-import Napster from './Napster.js'
-import jQuery from 'jquery'
-
+import SearchContainer from './SearchContainer.js'
+import Jukebox from './Jukebox.js'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import Navbar from './Navbar'
 
 const songsURL = 'http://localhost:3002/songs'
 
 class App extends Component {
-  constructor(props){
-    super(props)
-    Napster(window, jQuery, JSON)
-
-    this.state={
-      songs:[]
-    }
-
-
-
-    window.Napster.init({
-      consumerKey: 'ZDhhZTQ5NzQtYWM1Yy00OTUzLWJhZGUtZTUzMGRkODc3Mjc2'
-
-    });
+  state={
+    addedSongs: []
   }
 
-
-
-  displaySongTitle = ()=>{
-    return this.state.songs.map(song=>{
-      return song.title
+  addSong = (event, song) => {
+    let newSongs = [...this.state.addedSongs, song]
+    this.setState({
+      addedSongs: newSongs
     })
   }
-
-  // componentDidMount() {
-  //   fetch(songsURL)
-  //   .then(res => res.json())
-  //   .then(songs => this.setState({
-  //     songs
-  //   }))
-  // }
 
 
 
   render() {
-
-    console.log(window.Napster.player.play('Tra.5156528').play);
-
     return (
-      <div>
-        {}
-      </div>
+      <Router>
 
+      <div>
+        <Navbar />
+        <Route exact path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
+        <Route path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
+      </div>
+      </Router>
     );
   }
 }
