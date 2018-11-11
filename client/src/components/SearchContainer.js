@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SearchResult from './SearchResult.js'
-import API_KEY from './keys.js'
+import API_KEY from '../keys.js'
 import {Link} from 'react-router-dom'
 
 const youtubeURL = 'https://www.googleapis.com/youtube/v3'

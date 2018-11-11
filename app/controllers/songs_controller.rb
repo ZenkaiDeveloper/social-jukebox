@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_song, only: [:show, :update, :destroy]
 
   # GET /songs
