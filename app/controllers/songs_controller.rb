@@ -4,8 +4,7 @@ class SongsController < ApplicationController
 
   # GET /songs
   def index
-    @songs = Song.all
-
+    @songs = current_user.songs
     render json: @songs
   end
 
