@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import SearchResult from './SearchResult.js'
 import {SongCard} from './SongCard'
 
@@ -11,10 +11,7 @@ import {SongCard} from './SongCard'
 
 
 
-
-
-
-export default class Jukebox extends Component {
+class Jukebox extends Component {
 
 
 displayAddedSongs=()=>{
@@ -23,11 +20,16 @@ displayAddedSongs=()=>{
   })
 }
 
+logOut = ()=>{
+  localStorage.clear();
+  this.props.history.push('/')
+}
 
 render() {
   return(
     <div>
     <h1>Welcome to Your Jukebox!</h1>
+    <button onClick={this.logOut}>Log Out</button>
     {this.displayAddedSongs()}
     <Link to='/search'>Add Songs</Link>
     </div>
@@ -35,3 +37,5 @@ render() {
 }
 
 }
+
+export default withRouter(Jukebox)

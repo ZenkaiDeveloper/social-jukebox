@@ -16,7 +16,7 @@ class SongsController < ApplicationController
   # POST /songs
   def create
     @song = Song.new(song_params)
-
+    @song.user_id = current_user.id
     if @song.save
       render json: @song, status: :created, location: @song
     else
