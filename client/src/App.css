@@ -22,6 +22,15 @@
   color: #61dafb;
 }
 
+label{
+  display: block;
+}
+
+/* iframe{
+  width:0;
+  height:0;
+} */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
