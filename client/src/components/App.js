@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import Navbar from './Navbar'
 import Login from './Login'
 import decode from 'jwt-decode'
+import SignUp from './SignUp'
 
 
 const checkAuth = () =>{
@@ -57,10 +58,11 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path='/login' component= {() => <Login/>}/>
           {/* <PrivateRoute component={Navbar} />*/}
-          <AuthRoute path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
-          <Route path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
+          <AuthRoute exact path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
+          <AuthRoute path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
         </div>
       </Router>
     );

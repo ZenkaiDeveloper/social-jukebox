@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import '../Login.css'
+import React, { Component } from 'react';
+import {Link, Route} from 'react-router-dom';
+import '../Login.css';
+import SignUp from './SignUp';
 
 class Login extends Component{
   state={
@@ -15,6 +16,33 @@ class Login extends Component{
     })
   }
 
+  login = (e)=>{
+    e.preventDefault();
+    const username = this.state.username
+    const password = this.state.password
+    console.log(username ,password)
+    let options = {
+      method:"POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        "auth":{
+          "username": username,
+          "password": password
+        }
+      })
+    }
+    fetch("http://localhost:3002/api/user_token", options)
+      .then(r=>r.json())
+      .then(result=>{
+        localStorage.setItem('jwt', result.jwt)
+      })
+      .catch(error =>{
+        console.log(error)
+      })
+  }
+
   render(){
     return(
       <div className="wrapper">
@@ -23,7 +51,7 @@ class Login extends Component{
             <div className="logo">
               <h1>Social Jukebox</h1>
             </div>
-            <form>
+            <form onSubmit={this.login}>
               <div>
                 <label htmlFor="username">Username</label>
                 <input className="text-input" name="username" type="text" value={this.state.username} onChange={this.changeHandler} />
@@ -45,7 +73,7 @@ class Login extends Component{
               <hr className="bar" />
             </div>
 
-            <Link to="/" className="secondary-btn">Create an account</Link>
+            <Link to="/signup" className="secondary-btn">Create an account</Link>
 
           </div>
         </div>
