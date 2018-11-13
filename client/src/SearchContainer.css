@@ -1,0 +1,12 @@
+.SearchContainer {
+  background: url('http://localhost:3000/records.jpg') center/cover;
+}
+
+.SearchBar {
+    width: 100%;
+    text-align:center;
+}
+
+.searchTitle {
+  text-decoration-color: #ffffff;
+}

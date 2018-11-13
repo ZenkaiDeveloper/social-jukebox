@@ -93,8 +93,8 @@ class Login extends Component{
           <div id="showcase">
             <div className="showcase-content">
               <div className="right-container">
-                <h1 className="showcase-text">Immerse yourself in <strong>Music</strong></h1>
-                <Link to="/" className="secondary-btn">Join for Free</Link>
+                <h1 className="showcase-text">Immerse your life in <strong>Music</strong> with your Social Jukebox</h1>
+                <Link to="/signup" className="secondary-btn">Join for Free</Link>
               </div>
             </div>
           </div>

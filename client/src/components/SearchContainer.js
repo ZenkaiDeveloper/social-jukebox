@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SearchResult from './SearchResult.js'
 import API_KEY from '../keys.js'
 import {Link} from 'react-router-dom'
+import '../SearchContainer.css'
 
 const youtubeURL = 'https://www.googleapis.com/youtube/v3'
 const apiKEY = API_KEY
@@ -47,11 +48,10 @@ export default class SearchContainer extends Component {
     let results = this.state.searchResults.map(result => <SearchResult key={result.id.videoId} result={result} addSong={this.props.addSong}/>)
 
     return(
-      <div>
-      <Link to="/">Go to Jukebox</Link>
-      <form onSubmit={this.searchSubmit}>
-      <input name="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} id='searchBar' type='text'/>
-      <input type='submit'/>
+      <div className='SearchContainer'>
+      <form className='SearchBar' onSubmit={this.searchSubmit}>
+      <input name="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} id='searchBar' type='text' placeholder='Search for Songs'/>
+      <input type='submit' value='Search'/>
       </form>
       {results}
       </div>

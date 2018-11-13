@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Login.css'
+import '../SignUp.css'
 
 const tokenURL = 'http://localhost:3002/api/users'
 
@@ -45,10 +45,13 @@ class SignUp extends Component{
 
   render(){
     return(
-      <div>
-        <h1>Quick and Easy Signup Process</h1>
+      <div className='login-wrapper'>
+
+      <div className="left">
+        <div className="signin">
+        <h1 className='logo'>Quick and Easy Signup</h1>
+        <form onSubmit={this.submitHandler} className='signup-fields'>
         <h3>Account Details</h3>
-        <form onSubmit={this.submitHandler}>
           <div>
             <label htmlFor="firstName">First name*</label>
             <input name="firstName" type="text" className="signup-input" value={this.state.firstName} onChange={this.changeHandler}/>
@@ -80,9 +83,22 @@ class SignUp extends Component{
           </div>
 
           <div>
-            <input type="submit" className="primary-btn" value="Create Account"/>
+            <input type="submit" className="primary-btn signup-btn" value="Create Account"/>
           </div>
         </form>
+        </div>
+        </div>
+
+        <div className="right">
+          <div id="showcase-signup">
+            <div className="showcase-content">
+              <div className="right-container">
+                <h1 className="showcase-text">Immerse your life in <strong>Music</strong> with your Social Jukebox</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }
