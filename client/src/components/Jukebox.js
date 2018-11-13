@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import SearchResult from './SearchResult.js'
 import {SongCard} from './SongCard'
+import '../Jukebox.css'
 
 
 
@@ -26,7 +27,10 @@ render() {
     <div>
     <h1>Welcome to Your Jukebox!</h1>
     <button onClick={this.logOut}>Log Out</button>
-    {this.displayAddedSongs()}
+    <div className="card-container">
+      {this.displayAddedSongs()}
+    </div>
+
     <Link to='/search'>Add Songs</Link>
     </div>
   )

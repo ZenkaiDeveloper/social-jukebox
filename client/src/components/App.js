@@ -38,6 +38,7 @@ const songsURL = 'http://localhost:3002/api/songs'
 
 
 class App extends Component {
+
   state={
     userSongs: [],
     currentSong: ""
@@ -99,7 +100,7 @@ class App extends Component {
       return <Navbar currentSong={this.state.currentSong} />
     }
   }
-
+  
   changeCurrentSong = (e,song) =>{
     this.setState({
       currentSong: song

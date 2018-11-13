@@ -91,14 +91,15 @@
   color:#f96816;
 }
 
-.signin .or{
+.or{
   display: flex;
   flex-direction: row;
   margin-bottom: 1.2rem;
   align-items: center;
 }
 
-.signin .or .bar{
+
+ .or .bar{
   flex: auto;
   border: none;
   height:1px;
