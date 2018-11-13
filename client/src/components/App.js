@@ -100,9 +100,9 @@ class App extends Component {
     }
   }
 
-  changeCurrentSong = (e,songId) =>{
+  changeCurrentSong = (e,song) =>{
     this.setState({
-      currentSong: songId
+      currentSong: song
     })
   }
 
