@@ -43,6 +43,9 @@ class Login extends Component{
         this.props.history.push('/')
         // window.location.replace('/')
       })
+      .then(()=>{
+        this.props.getData()
+      })
       .catch(error =>{
         console.log(error)
       })

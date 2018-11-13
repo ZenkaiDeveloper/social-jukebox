@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 
 const youtubeURL = 'https://www.googleapis.com/youtube/v3'
 const apiKEY = API_KEY
-
 export default class SearchContainer extends Component {
 
   state = {
@@ -14,11 +13,13 @@ export default class SearchContainer extends Component {
   }
 
   componentDidMount(){
-    fetch(`${youtubeURL}/search?part=snippet&q=${this.state.searchTerm}&type=playlist&key=${apiKEY.API_KEY}`)
+    fetch(`${youtubeURL}/search?part=snippet&key=${apiKEY.API_KEY}&q=${this.state.searchTerm}&type=video&order=viewCount&maxResults=15`)
       .then(res => res.json())
-      .then(response => this.setState({
-        searchResults: response.items
-      }))
+      .then(response => {
+        this.setState({
+          searchResults: response.items
+        }, ()=> {})
+      })
   }
 
 
@@ -34,7 +35,7 @@ export default class SearchContainer extends Component {
   }
 
   newSearch() {
-    fetch(`${youtubeURL}/search?part=snippet&q=${this.state.searchTerm}&type=playlist&key=${apiKEY.API_KEY}`)
+    fetch(`${youtubeURL}/search?part=snippet&key=${apiKEY.API_KEY}&q=${this.state.searchTerm}&type=video&order=viewCount&maxResults=15`)
       .then(res => res.json())
       .then(response => this.setState({
         searchResults: response.items
@@ -43,7 +44,7 @@ export default class SearchContainer extends Component {
 
   render() {
 
-let results = this.state.searchResults.map(result => <SearchResult result={result} addSong={this.props.addSong}/>)
+    let results = this.state.searchResults.map(result => <SearchResult key={result.id.videoId} result={result} addSong={this.props.addSong}/>)
 
     return(
       <div>

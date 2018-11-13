@@ -35,9 +35,12 @@ const AuthRoute = ({ component: Component, ...rest }) => {
 
 const songsURL = 'http://localhost:3002/api/songs'
 
+
+
 class App extends Component {
   state={
-    userSongs: []
+    userSongs: [],
+    currentSong: ""
   }
 
   addSong = (event, song) => {
@@ -54,23 +57,65 @@ class App extends Component {
       },
       body:JSON.stringify({
         title: song.snippet.title,
-        author: song.snippet.channelTitle
+        artist: song.snippet.channelTitle,
+        video_id: song.id.videoId
       })
     }
     fetch(songsURL,options)
       .then(r=>r.json())
-      .then(console.log)
+      .then(()=>{
+        this.getSongs()
+      })
+  }
+
+  getSongs = () => {
+    let token = "Bearer " + localStorage.getItem("jwt");
+    let options={
+      method:"GET",
+      headers:{
+        'Content-type': "application/json",
+        'Authorization': token
+      }
+    }
+    fetch(songsURL,options)
+      .then(r=>r.json())
+      .then(songs=>{
+        this.setState({
+          userSongs: songs
+        })
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+  }
+
+  componentDidMount(){
+    this.getSongs()
+  }
+
+  displayNavbar = ()=> {
+    let token = localStorage.getItem('jwt');
+    if(token){
+      return <Navbar currentSong={this.state.currentSong} />
+    }
+  }
+
+  changeCurrentSong = (e,songId) =>{
+    this.setState({
+      currentSong: songId
+    })
   }
 
 
   render() {
+    console.log(this.state.currentSong)
     return (
       <Router>
         <div>
+          {this.displayNavbar()}
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path='/login' component= {() => <Login/>}/>
-          {/* <PrivateRoute component={Navbar} />*/}
-          <AuthRoute exact path='/' component= {() => <Jukebox addedSongs={this.state.userSongs}/>}/>
+          <Route exact path='/login' component= {() => <Login getData={this.getSongs} />}/>
+          <AuthRoute exact path='/' component= {() => <Jukebox changeCurrentSong={this.changeCurrentSong} userSongs={this.state.userSongs}/>}/>
           <AuthRoute path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
         </div>
       </Router>

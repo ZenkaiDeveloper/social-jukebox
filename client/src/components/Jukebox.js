@@ -6,26 +6,22 @@ import {SongCard} from './SongCard'
 
 
 
-
-
-
-
-
 class Jukebox extends Component {
 
 
 displayAddedSongs=()=>{
-  return this.props.addedSongs.map(song=>{
-    return <SongCard song={song} />
+  return this.props.userSongs.map(song=>{
+    return <SongCard changeCurrentSong={this.props.changeCurrentSong} song={song} />
   })
 }
 
 logOut = ()=>{
   localStorage.clear();
-  this.props.history.push('/')
+  window.location.replace('/')
 }
 
 render() {
+
   return(
     <div>
     <h1>Welcome to Your Jukebox!</h1>
