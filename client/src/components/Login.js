@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Redirect, withRouter} from 'react-router-dom';
 import '../Login.css';
 import SignUp from './SignUp';
 
@@ -36,16 +36,27 @@ class Login extends Component{
     fetch("http://localhost:3002/api/user_token", options)
       .then(r=>r.json())
       .then(result=>{
+        console.log(result)
         localStorage.setItem('jwt', result.jwt)
+      })
+      .then(()=>{
+        this.props.history.push('/')
+        // window.location.replace('/')
+      })
+      .then(()=>{
+        this.props.getData()
       })
       .catch(error =>{
         console.log(error)
       })
+
+
+
   }
 
   render(){
     return(
-      <div className="wrapper">
+      <div className="login-wrapper">
         <div className="left">
           <div className="signin">
             <div className="logo">
@@ -95,4 +106,4 @@ class Login extends Component{
   }
 }
 
-export default Login
+export default withRouter(Login)

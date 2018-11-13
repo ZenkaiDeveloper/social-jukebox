@@ -28,13 +28,19 @@ class SignUp extends Component{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password,
-        password_confirmation: this.state.passwordConfirmation
-      })
+        'user':
+        {
+          username: this.state.username,
+          email: this.state.email,
+          password: this.state.password,
+          password_confirmation: this.state.passwordConfirmation
+        }
+    }
+    )
     })
-    .then(console.log)
+    .then(()=>{
+      this.props.history.push('/');
+    })
   }
 
   render(){

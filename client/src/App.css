@@ -26,10 +26,9 @@ label{
   display: block;
 }
 
-/* iframe{
-  width:0;
-  height:0;
-} */
+.player{
+  display:none;
+}
 
 @keyframes App-logo-spin {
   from {
