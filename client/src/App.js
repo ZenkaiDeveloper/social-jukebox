@@ -24,10 +24,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div>
-      <Route exact path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
-      <Route path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
-      </div>
+        <div>
+          <Route exact path='/' component= {() => <Jukebox addedSongs={this.state.addedSongs}/>}/>
+          <Route path='/search' component={() => <SearchContainer addSong={this.addSong}/>}/>
+        </div>
       </Router>
     );
   }

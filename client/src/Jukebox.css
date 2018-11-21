@@ -5,4 +5,72 @@
   text-align: center;
   width:95%;
   margin:0 auto;
+  background-color:#eee;
+}
+
+.welcome{
+  text-align: center;
+  font-family: 'Lobster Two';
+  font-size: 3rem;
+  color:#fdab00;
+  padding:1rem;
+}
+
+small{
+  display:block;
+  width:100%;
+  text-align: center;
+  margin:0 auto;
+  font-family: 'Lobster Two';
+  color:#fdab00;
+  font-size:1rem;
+
+}
+
+.jukebox-wrapper{
+  background-color:#211e1e;
+  margin-top:-1rem;
+  padding-top:1rem;
+}
+
+.btn-container{
+  padding:1rem;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.arrow-left{
+  grid-column: 1/4;
+  text-align: center;
+}
+
+.arrow-right{
+  grid-column: 4/7;
+  text-align: center;
+}
+
+.arrow-right:hover{
+  cursor: pointer;
+}
+
+.arrow-left:hover{
+  cursor: pointer;
+}
+
+.fa-long-arrow-alt-left{
+  color:black;
+  background-color:#e4cdb3;
+  font-size:7rem;
+  border:1px solid #f4f4f4;
+  padding:1.5rem 13rem;
+
+}
+
+.fa-long-arrow-alt-right{
+  color:black;
+  background-color:#e4cdb3;
+  font-size:7rem;
+  border:1px solid #f4f4f4;
+  padding:1.5rem 13rem;
+
 }

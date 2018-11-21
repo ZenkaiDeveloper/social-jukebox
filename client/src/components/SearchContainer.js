@@ -50,8 +50,8 @@ export default class SearchContainer extends Component {
     return(
       <div className='SearchContainer'>
       <form className='SearchBar' onSubmit={this.searchSubmit}>
-      <input name="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} id='searchBar' type='text' placeholder='Search for Songs'/>
-      <input type='submit' value='Search'/>
+      <input className="search-term" name="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} id='searchBar' type='text' placeholder='Search for Songs'/>
+      <input className="search-btn" type='submit' value='Search'/>
       </form>
       {results}
       </div>

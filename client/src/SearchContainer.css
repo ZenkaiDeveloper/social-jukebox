@@ -1,10 +1,28 @@
 .SearchContainer {
   background: url('http://localhost:3000/records.jpg') center/cover;
+  height: 100vh;
+  padding-left:5rem;
 }
 
 .SearchBar {
     width: 100%;
     text-align:center;
+}
+
+.SearchBar .search-term{
+  height:2rem;
+  width:50%;
+  font-size:1.3rem;
+  opacity:0.7;
+  margin:1rem;
+  background-color:black;
+  border:none;
+  border-radius:3px;
+  color:#f4f4f4;
+}
+
+.search-btn{
+  font-size: 3rem;
 }
 
 .searchTitle {

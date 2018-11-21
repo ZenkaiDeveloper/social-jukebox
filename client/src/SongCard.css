@@ -1,5 +1,10 @@
 .song-card{
   border: 1px solid black;
+
+}
+
+.song-card:hover{
+  cursor:pointer;
 }
 
 
@@ -19,9 +24,10 @@
 
 .artist-name{
   position:absolute;
+  width:12rem;
   z-index:1;
   bottom:-.8rem;
-  right:40%;
+  right:38%;
   font-weight:bold;
   border-radius:3px;
   padding: 1rem;
@@ -29,7 +35,7 @@
 
 }
 
-.remove-card{
+.add-card{
   margin: 2rem;
   padding:.5rem;
 }
@@ -44,7 +50,7 @@
 }
 
 .title{
-  margin:2rem;
+  margin:3rem;
 }
 
 .fa-caret-left{
