@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../SignUp.css'
 
-const tokenURL = 'http://localhost:3002/api/users'
+const tokenURL = 'social-jukebox-backend.herokuapp.com/api/users'
 
 class SignUp extends Component{
 

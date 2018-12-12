@@ -33,7 +33,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   );
 }
 
-const songsURL = 'http://localhost:9000/api/songs'
+const songsURL = 'http://social-jukebox-backend.herokuapp.com/api/songs'
 
 
 

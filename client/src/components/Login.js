@@ -32,7 +32,7 @@ class Login extends Component{
         }
       })
     }
-    fetch("http://localhost:9000/api/user_token", options)
+    fetch("http://social-jukebox-backend.herokuapp.com/api/user_token", options)
       .then(r=>r.json())
       .then(result=>{
         console.log(result)
