@@ -9,7 +9,6 @@ class Login extends Component{
     password:""
   }
 
-
   changeHandler = (event)=>{
     this.setState({
       [event.target.name]:event.target.value
@@ -33,7 +32,7 @@ class Login extends Component{
         }
       })
     }
-    fetch("http://localhost:3002/api/user_token", options)
+    fetch("http://localhost:9000/api/user_token", options)
       .then(r=>r.json())
       .then(result=>{
         console.log(result)

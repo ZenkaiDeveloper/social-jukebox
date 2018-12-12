@@ -3,8 +3,6 @@ class User < ApplicationRecord
   has_many :songs
   validates :username, presence: true, uniqueness: true
 
-
-
   def self.from_token_request request
     # Returns a valid user, `nil` or raise `Knock.not_found_exception_class_name`
     # e.g.

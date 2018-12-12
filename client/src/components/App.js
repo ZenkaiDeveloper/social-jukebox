@@ -33,7 +33,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   );
 }
 
-const songsURL = 'http://localhost:3002/api/songs'
+const songsURL = 'http://localhost:9000/api/songs'
 
 
 
@@ -100,7 +100,7 @@ class App extends Component {
       return <Navbar currentSong={this.state.currentSong} />
     }
   }
-  
+
   changeCurrentSong = (e,song) =>{
     this.setState({
       currentSong: song
